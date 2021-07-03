@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}SL Blog{% endblock title %} 
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Welcome to my blog</h1>
+    <p class="col-md-8 fs-4">
+      This blog is created for Django traning. It has admin panel with post, category, tags, author sections.
+      For frontend it has homepage with all posts and single post page.
+    </p>
+  </div>
+</div>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    {% for post in posts %}
+  <div class="col">
+    <div class="card shadow-sm">
+    <a href="{{ post.get_absolute_url }}">
+        <img src="{{ post.thumbnail }}" class="card-img-top" alt="{{ post.title }}">
+    </a>
+
+      <div class="card-body">
+        <a href="{{ post.get_absolute_url }}">
+            <h5 class="card-title">{{ post.title }}</h5>
+        </a>
+        <p class="card-text">
+            {{ post.excerpt }}
+        </p>
+        
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}
